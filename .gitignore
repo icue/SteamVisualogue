@@ -11,3 +11,9 @@
 /.codex/config.toml
 /output/
 **/__pycache__/
+**/*.sqlite
+**/*.sqlite-journal
+**/*.sqlite-shm
+**/*.sqlite-wal
+**/output/
+**/.steam-visualogue*.env
