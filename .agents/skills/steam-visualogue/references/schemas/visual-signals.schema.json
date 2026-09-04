@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "visual-signals.schema.json",
+  "title": "Sampled artwork-derived visual signals",
+  "type": "object",
+  "required": [
+    "run_id",
+    "evidence_fingerprint",
+    "visual_fingerprint",
+    "library_palette",
+    "breadth_palette",
+    "sampling",
+    "sources",
+    "failures",
+    "source",
+    "confidence"
+  ],
+  "properties": {
+    "run_id": {"type": ["string", "null"]},
+    "evidence_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "visual_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "library_palette": {"$ref": "#/$defs/palette"},
+    "breadth_palette": {"$ref": "#/$defs/palette"},
+    "sampling": {"$ref": "#/$defs/sampling"},
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "failures": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/failure"}
+    },
+    "source": {"const": "sampled_steam_artwork"},
+    "confidence": {"enum": ["high", "medium", "low"]}
+  },
+  "$defs": {
+    "sampling": {
+      "type": "object",
+      "required": [
+        "strategy",
+        "eligible_games",
+        "selected_games",
+        "successful_games",
+        "sample_fraction",
+        "selected_playtime_fraction",
+        "representation_coverage"
+      ],
+      "properties": {
+        "strategy": {"const": "top32-stratified-tail32"},
+        "eligible_games": {"type": "integer", "minimum": 0},
+        "selected_games": {"type": "integer", "minimum": 0, "maximum": 64},
+        "successful_games": {"type": "integer", "minimum": 0, "maximum": 64},
+        "sample_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "selected_playtime_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "representation_coverage": {
+          "type": "object",
+          "required": ["titles", "lived_weight"],
+          "properties": {
+            "titles": {"type": "number", "minimum": 0, "maximum": 1},
+            "lived_weight": {"type": "number", "minimum": 0, "maximum": 1}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": ["appid", "selection_role", "content_sha256", "title_weight", "lived_weight"],
+      "properties": {
+        "appid": {"type": "integer", "minimum": 1},
+        "selection_role": {"enum": ["complete", "top", "tail"]},
+        "content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "title_weight": {"type": "number", "exclusiveMinimum": 0},
+        "lived_weight": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "failure": {
+      "type": "object",
+      "required": ["appid", "status"],
+      "properties": {
+        "appid": {"type": "integer", "minimum": 1},
+        "status": {"type": "string", "minLength": 1},
+        "error": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "palette": {
+      "type": "object",
+      "required": [
+        "dominant_colors",
+        "mean_luminance",
+        "mean_saturation",
+        "mean_chroma",
+        "mean_oklab_lightness",
+        "palette_space",
+        "algorithm"
+      ],
+      "properties": {
+        "dominant_colors": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["hex", "rgb", "weight", "luminance", "oklch", "chroma"],
+            "properties": {
+              "hex": {"type": "string", "pattern": "^#[0-9A-F]{6}$"},
+              "rgb": {
+                "type": "array",
+                "prefixItems": [
+                  {"type": "integer", "minimum": 0, "maximum": 255},
+                  {"type": "integer", "minimum": 0, "maximum": 255},
+                  {"type": "integer", "minimum": 0, "maximum": 255}
+                ],
+                "items": false
+              },
+              "weight": {"type": "number", "minimum": 0, "maximum": 1},
+              "luminance": {"type": "number", "minimum": 0, "maximum": 1},
+              "oklch": {
+                "type": "array",
+                "prefixItems": [
+                  {"type": "number"},
+                  {"type": "number", "minimum": 0},
+                  {"type": "number", "minimum": 0, "maximum": 360}
+                ],
+                "items": false
+              },
+              "chroma": {"type": "number", "minimum": 0}
+            },
+            "additionalProperties": false
+          }
+        },
+        "mean_luminance": {"type": ["number", "null"]},
+        "mean_saturation": {"type": ["number", "null"]},
+        "mean_chroma": {"type": ["number", "null"], "minimum": 0},
+        "mean_oklab_lightness": {"type": ["number", "null"]},
+        "palette_space": {"const": "oklch"},
+        "algorithm": {"const": "weighted-oklch-peak-medoid"},
+        "source_image_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "valid_pixel_count": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

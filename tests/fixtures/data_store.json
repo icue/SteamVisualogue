@@ -1,0 +1,17 @@
+{
+  "10": {
+    "success": true,
+    "data": {
+      "name": "Ten Deluxe",
+      "type": "game",
+      "genres": [{"id": "1", "description": "Action"}],
+      "release_date": {"coming_soon": false, "date": "1 Jan, 2020"},
+      "developers": ["Example Studio"],
+      "publishers": ["Example Publisher"],
+      "platforms": {"windows": true, "mac": false, "linux": true},
+      "categories": [{"id": 22, "description": "Steam Achievements"}],
+      "achievements": {"total": 1},
+      "header_image": "https://cdn.example/10/header.jpg"
+    }
+  }
+}

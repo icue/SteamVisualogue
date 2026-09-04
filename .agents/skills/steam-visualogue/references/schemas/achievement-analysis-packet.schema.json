@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "achievement-analysis-packet.schema.json",
+  "title": "Achievement semantic analysis packet",
+  "type": "object",
+  "required": ["format", "stage", "packet_id", "run_id", "source_fingerprints", "completion_criterion", "games", "allowed_classifications"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-packet"},
+    "stage": {"const": "achievement-analysis"},
+    "packet_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "source_fingerprints": {"type": "object", "additionalProperties": {"type": "string"}},
+    "completion_criterion": {"type": "string", "maxLength": 1000},
+    "result_schema": {"type": "string"},
+    "games": {"type": "array", "items": {"$ref": "#/$defs/game"}},
+    "allowed_classifications": {"type": "array", "maxItems": 32, "items": {"type": "string", "maxLength": 64}}
+  },
+  "$defs": {
+    "game": {
+      "type": "object",
+      "required": ["game_id", "canonical_name", "playtime_minutes", "completion", "coverage", "achievements"],
+      "properties": {
+        "game_id": {"type": "string", "pattern": "^game:[1-9][0-9]*$"},
+        "canonical_name": {"type": "string", "maxLength": 256},
+        "playtime_minutes": {"type": "number", "minimum": 0},
+        "completion": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "coverage": {"type": "object", "additionalProperties": {"type": ["number", "string", "boolean", "null"]}},
+        "achievements": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/achievement"}}
+      },
+      "additionalProperties": false
+    },
+    "achievement": {
+      "type": "object",
+      "required": ["achievement_id", "name", "global_percent", "unlocked", "unlock_timestamp", "evidence_id"],
+      "properties": {
+        "achievement_id": {"type": "string", "pattern": "^achievement:[1-9][0-9]*:[^:]+$"},
+        "name": {"type": "string", "maxLength": 256},
+        "global_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "unlocked": {"type": "boolean"},
+        "unlock_timestamp": {"type": ["integer", "null"], "minimum": 0},
+        "evidence_id": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

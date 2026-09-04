@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "localized-labels.schema.json",
+  "title": "Steam Visualogue localized display labels",
+  "type": "object",
+  "required": ["format", "run_id", "report_locale", "catalog_version", "label_fingerprint", "games", "achievements", "failures"],
+  "properties": {
+    "format": {"const": "steam-visualogue-localized-labels"},
+    "run_id": {"type": "string"},
+    "report_locale": {"enum": ["en-US", "zh-CN"]},
+    "catalog_version": {"type": "string", "minLength": 1},
+    "label_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "games": {
+      "type": "object",
+      "propertyNames": {"pattern": "^game:[1-9][0-9]*$"},
+      "additionalProperties": {"$ref": "#/$defs/game_label"}
+    },
+    "achievements": {
+      "type": "object",
+      "propertyNames": {"pattern": "^achievement:[1-9][0-9]*:[^:]+$"},
+      "additionalProperties": {"$ref": "#/$defs/achievement_label"}
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(game:[1-9][0-9]*|achievement:[1-9][0-9]*:[^:]+)$"},
+          "status": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "game_label": {
+      "type": "object",
+      "required": ["display_name", "source"],
+      "properties": {
+        "display_name": {"type": "string", "minLength": 1},
+        "source": {"enum": ["canonical", "steam-localized", "canonical-fallback"]}
+      },
+      "additionalProperties": false
+    },
+    "achievement_label": {
+      "type": "object",
+      "required": ["display_name", "description", "source"],
+      "properties": {
+        "display_name": {"type": "string", "minLength": 1},
+        "description": {"type": "string"},
+        "source": {"enum": ["canonical", "steam-localized", "canonical-fallback"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

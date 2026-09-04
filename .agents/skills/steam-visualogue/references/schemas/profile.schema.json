@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "profile.schema.json",
+  "title": "Steam Visualogue normalized profile",
+  "type": "object",
+  "required": ["run_id", "player_alias", "generated_at", "games"],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "player_alias": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "minLength": 1},
+    "enriched_at": {"type": "string", "minLength": 1},
+    "data_snapshot": {
+      "type": "object",
+      "required": ["id", "collected_at", "enriched_at", "source"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^svdata-[A-Za-z0-9-]+$"},
+        "collected_at": {"type": "string", "minLength": 1},
+        "enriched_at": {"type": ["string", "null"]},
+        "source": {"enum": ["network", "cached_snapshot"]}
+      },
+      "additionalProperties": false
+    },
+    "evidence_fingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "games": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["appid", "name", "playtime_minutes"],
+        "properties": {
+          "appid": {"type": "integer", "minimum": 1},
+          "name": {"type": "string"},
+          "playtime_minutes": {"type": "number", "minimum": 0},
+          "metadata": {"type": "object"},
+          "artwork_url": {"type": ["string", "null"]},
+          "achievements": {
+            "type": "object",
+            "properties": {
+              "status": {"type": "string"},
+              "items": {"type": "array", "items": {"$ref": "#/$defs/achievement"}}
+            },
+            "additionalProperties": true
+          },
+          "data_status": {"type": "object"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "achievement": {
+      "type": "object",
+      "required": ["api_name", "achieved"],
+      "properties": {
+        "api_name": {"type": "string"},
+        "name": {"type": "string"},
+        "description": {"type": ["string", "null"]},
+        "icon_url": {"type": ["string", "null"]},
+        "icon_gray_url": {"type": ["string", "null"]},
+        "achieved": {"type": "boolean"},
+        "unlock_time": {"type": ["integer", "null"], "minimum": 0},
+        "global_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "hidden": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

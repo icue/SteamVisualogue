@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quality-packet.schema.json",
+  "title": "Steam Visualogue quality packet",
+  "type": "object",
+  "required": ["format", "gate", "attempt_id", "packet_id", "input_fingerprint", "pages", "required_page_ids", "rubric", "result_template"],
+  "properties": {
+    "format": {"const": "steam-visualogue-quality-packet"},
+    "gate": {"enum": ["reader", "visual", "factual"]},
+    "attempt_id": {"type": "string", "pattern": "^(reader|visual|factual)-0[12]$"},
+    "packet_id": {"type": "string", "minLength": 1},
+    "input_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "locale": {"type": "string", "minLength": 2},
+    "mode": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "pages": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/page"}},
+    "required_page_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 1}},
+    "rubric": {"type": "object"},
+    "result_template": {"type": "object"},
+    "deck_progression": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "contact_sheet": {"$ref": "#/$defs/image"},
+    "images": {"type": "array", "minItems": 1, "maxItems": 8, "items": {"$ref": "#/$defs/image"}},
+    "rendered_pages": {"type": "array", "minItems": 1, "maxItems": 6, "items": {"$ref": "#/$defs/image"}},
+    "layout_rows": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "asset_bindings": {"type": "array", "items": {"type": "object"}},
+    "composition_metadata": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "labels": {"type": "object", "additionalProperties": {"type": "string"}},
+    "evidence_closure": {"type": "object", "additionalProperties": {"type": "object"}},
+    "allowed_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+  },
+  "allOf": [
+    {"if": {"properties": {"gate": {"const": "reader"}}}, "then": {"required": ["locale", "mode", "title", "deck_progression"]}},
+    {"if": {"properties": {"gate": {"const": "visual"}}}, "then": {"required": ["contact_sheet", "images", "rendered_pages", "layout_rows", "asset_bindings", "composition_metadata"], "properties": {"pages": {"items": {"required": ["asset_ids", "measure_bindings", "item_bindings", "layout_row", "rendered_page", "asset_bindings", "composition_metadata"]}}}}},
+    {"if": {"properties": {"gate": {"const": "factual"}}}, "then": {"required": ["locale", "mode", "title", "labels", "evidence_closure", "allowed_evidence_ids"], "properties": {"pages": {"items": {"required": ["asset_ids", "measure_bindings", "item_bindings", "presentation_content"]}}}}}
+  ],
+  "$defs": {
+    "page": {
+      "type": "object",
+      "required": ["page", "narrative_move", "reader_question", "claim", "reader_copy", "visible_identity_owner", "visible_game_ids", "presentation_kind", "evidence_ids"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "narrative_move": {"type": "string", "minLength": 1},
+        "reader_question": {"type": "string", "minLength": 1},
+        "claim": {"type": "object"},
+        "reader_copy": {"$ref": "#/$defs/reader_copy"},
+        "visible_identity_owner": {"enum": ["headline", "renderer", "none"]},
+        "visible_game_ids": {"type": "array", "items": {"type": "string"}},
+        "presentation_kind": {"type": "string", "minLength": 1},
+        "evidence_ids": {"type": "array", "items": {"type": "string"}},
+        "asset_ids": {"type": "array", "items": {"type": "string"}},
+        "measure_bindings": {"type": "array", "items": {"type": "object"}},
+        "item_bindings": {"type": "array", "items": {"type": "object"}},
+        "presentation_content": {"type": "object"},
+        "layout_row": {"type": "object"},
+        "rendered_page": {"$ref": "#/$defs/image"},
+        "asset_bindings": {"type": "array", "items": {"type": "object"}},
+        "composition_metadata": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "reader_copy": {
+      "type": "object",
+      "required": ["headline"],
+      "properties": {
+        "headline": {"type": "string", "minLength": 1},
+        "support": {"type": "string", "minLength": 1},
+        "caption": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "image": {
+      "type": "object",
+      "required": ["kind", "file", "sha256", "width", "height"],
+      "properties": {
+        "kind": {"enum": ["contact-sheet", "rendered-page"]},
+        "page": {"type": "integer", "minimum": 1},
+        "file": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!.*\\\\)"},
+        "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

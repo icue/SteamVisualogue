@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence.schema.json",
+  "title": "Opaque editorial evidence ledger",
+  "type": "object",
+  "required": [
+    "run_id",
+    "evidence_fingerprint",
+    "metrics",
+    "games",
+    "achievements",
+    "patterns",
+    "cards"
+  ],
+  "properties": {
+    "run_id": {"type": "string"},
+    "evidence_fingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "metrics": {"type": "array"},
+    "games": {"type": "array"},
+    "achievements": {"type": "array"},
+    "patterns": {"type": "array"},
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "facts"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[^:]+:.+"},
+          "type": {"type": "string"},
+          "facts": {"type": "array"},
+          "games": {"type": "array"},
+          "strength": {"type": "number", "minimum": 0, "maximum": 1},
+          "coverage": {},
+          "confidence": {"enum": ["high", "medium", "low"]},
+          "warnings": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

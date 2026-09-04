@@ -1,0 +1,9 @@
+{
+  "response": {
+    "game_count": 2,
+    "games": [
+      {"appid": 10, "name": "Ten", "playtime_forever": 120},
+      {"appid": 20, "name": "Twenty", "playtime_forever": 0}
+    ]
+  }
+}

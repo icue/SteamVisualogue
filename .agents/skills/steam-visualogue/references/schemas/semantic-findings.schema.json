@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "semantic-findings.schema.json",
+  "title": "Constrained semantic findings",
+  "type": "object",
+  "required": ["findings"],
+  "properties": {
+    "format": {"const": "steam-visualogue-semantic-findings"},
+    "stage": {"enum": ["achievement-analysis", "editorial-curation", "editorial-synthesis"]},
+    "source_fingerprints": {"type": "object", "additionalProperties": {"type": "string", "maxLength": 128}},
+    "selected_set_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "analysis_contract_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "candidate_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "achievement_merge_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "curation_merge_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "semantic_merge_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "selected_game_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^game:[1-9][0-9]*$"}},
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "complete": {"type": "boolean"},
+        "selected_game_count": {"type": "integer", "minimum": 0},
+        "covered_game_count": {"type": "integer", "minimum": 0},
+        "cache_hit_game_count": {"type": "integer", "minimum": 0},
+        "dispatched_game_count": {"type": "integer", "minimum": 0},
+        "selected_achievement_count": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": true
+    },
+    "findings": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {"$ref": "#/$defs/finding"}
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": ["id", "type", "claim", "evidence_ids", "confidence"],
+      "properties": {
+        "id": {"type": "string", "maxLength": 256},
+        "type": {"type": "string"},
+        "claim": {"type": "string", "maxLength": 1000},
+        "evidence_ids": {"type": "array", "minItems": 1, "maxItems": 24, "items": {"type": "string", "maxLength": 256}, "uniqueItems": true},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "warnings": {"type": "array", "items": {"type": "string"}},
+        "recommended_role": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

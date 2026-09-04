@@ -1,0 +1,439 @@
+{
+  "format": "steam-visualogue-deck-plan",
+  "locale": "en-US",
+  "title": "A Broad Shelf, Selective Depth",
+  "mode": "thesis-led",
+  "editorial_frame": {
+    "guiding_question": "What does this pattern say about the way the library is lived?",
+    "thesis": {
+      "claim_id": "claim:thesis",
+      "text": "A broad shelf becomes deep through selective returns.",
+      "evidence_ids": [
+        "metric:library-count",
+        "metric:time-a"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "page": 1,
+      "narrative_move": "establish",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:opening",
+        "kind": "tension",
+        "text": "The library starts wide, then finds a few deep channels.",
+        "evidence_ids": [
+          "metric:library-count"
+        ],
+        "develops": []
+      },
+      "reader_copy": {
+        "headline": "The library starts wide, then finds a few deep channels."
+      },
+      "presentation": {
+        "kind": "opening",
+        "content": {}
+      }
+    },
+    {
+      "page": 2,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:hero",
+        "kind": "relation",
+        "text": "One title becomes the first deep channel.",
+        "evidence_ids": [
+          "game:1"
+        ],
+        "develops": [
+          "claim:thesis"
+        ]
+      },
+      "reader_copy": {
+        "headline": "One title becomes the first deep channel."
+      },
+      "presentation": {
+        "kind": "hero",
+        "content": {
+          "subject": {
+            "game_id": "game:1",
+            "asset_id": "game:1:portrait"
+          }
+        }
+      }
+    },
+    {
+      "page": 3,
+      "narrative_move": "quantify",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:completion",
+        "kind": "magnitude",
+        "text": "Completion is selective, not uniform.",
+        "evidence_ids": [
+          "metric:completion"
+        ],
+        "develops": [
+          "claim:hero"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Completion is selective, not uniform."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 4,
+      "narrative_move": "contrast",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:quant",
+        "kind": "contrast",
+        "text": "A fourfold gap changes the route.",
+        "evidence_ids": [
+          "game:2",
+          "game:3"
+        ],
+        "develops": [
+          "claim:completion"
+        ]
+      },
+      "reader_copy": {
+        "headline": "A fourfold gap changes the route."
+      },
+      "presentation": {
+        "kind": "quantitative-comparison",
+        "content": {
+          "shared_question": "Which title holds attention longer?",
+          "shared_dimension": "time spent",
+          "relationship_claim_id": "claim:quant",
+          "items": [
+            {
+              "subject": {
+                "game_id": "game:2",
+                "asset_id": "game:2:portrait"
+              },
+              "measure": {
+                "evidence_id": "game:2",
+                "fact": "playtime_minutes",
+                "format": {
+                  "kind": "hours",
+                  "precision": 1
+                }
+              },
+              "evidence_ids": [
+                "game:2"
+              ]
+            },
+            {
+              "subject": {
+                "game_id": "game:3",
+                "asset_id": "game:3:portrait"
+              },
+              "measure": {
+                "evidence_id": "game:3",
+                "fact": "playtime_minutes",
+                "format": {
+                  "kind": "hours",
+                  "precision": 1
+                }
+              },
+              "evidence_ids": [
+                "game:3"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "page": 5,
+      "narrative_move": "contrast",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:qual",
+        "kind": "contrast",
+        "text": "Two kinds of staying can share one shelf.",
+        "evidence_ids": [
+          "game:4",
+          "game:5"
+        ],
+        "develops": [
+          "claim:quant"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Two kinds of staying can share one shelf."
+      },
+      "presentation": {
+        "kind": "qualitative-comparison",
+        "content": {
+          "shared_question": "What makes a title worth returning to?",
+          "shared_dimension": "reason to return",
+          "relationship_claim_id": "claim:qual",
+          "items": [
+            {
+              "subject": {
+                "game_id": "game:4",
+                "asset_id": "game:4:header"
+              },
+              "statement": "It turns a difficult task into a familiar rhythm.",
+              "evidence_ids": [
+                "game:4"
+              ]
+            },
+            {
+              "subject": {
+                "game_id": "game:5",
+                "asset_id": "game:5:header"
+              },
+              "statement": "It leaves a bounded experience that feels complete.",
+              "evidence_ids": [
+                "game:5"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "page": 6,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:6",
+        "kind": "pattern",
+        "text": "Breadth supplies more than a list of categories.",
+        "evidence_ids": [
+          "metric:library-count"
+        ],
+        "develops": [
+          "claim:qual"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Breadth supplies more than a list of categories."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 7,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:7",
+        "kind": "consequence",
+        "text": "The longest return is concentrated, not constant.",
+        "evidence_ids": [
+          "metric:time-a"
+        ],
+        "develops": [
+          "claim:6"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The longest return is concentrated, not constant."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 8,
+      "narrative_move": "complicate",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:8",
+        "kind": "consequence",
+        "text": "Shorter sessions still change the shape of the shelf.",
+        "evidence_ids": [
+          "metric:time-b"
+        ],
+        "develops": [
+          "claim:7"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Shorter sessions still change the shape of the shelf."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 9,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:9",
+        "kind": "pattern",
+        "text": "The middle ground is where the library keeps its tension.",
+        "evidence_ids": [
+          "metric:completion"
+        ],
+        "develops": [
+          "claim:8"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The middle ground is where the library keeps its tension."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 10,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:10",
+        "kind": "consequence",
+        "text": "A broad shelf can still have a narrow center of gravity.",
+        "evidence_ids": [
+          "metric:library-count"
+        ],
+        "develops": [
+          "claim:9"
+        ]
+      },
+      "reader_copy": {
+        "headline": "A broad shelf can still have a narrow center of gravity."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 11,
+      "narrative_move": "complicate",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:11",
+        "kind": "consequence",
+        "text": "Depth appears as a rhythm rather than a permanent state.",
+        "evidence_ids": [
+          "metric:time-a"
+        ],
+        "develops": [
+          "claim:10"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Depth appears as a rhythm rather than a permanent state."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 12,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:12",
+        "kind": "pattern",
+        "text": "The smaller signal matters because it breaks the easy story.",
+        "evidence_ids": [
+          "metric:time-b"
+        ],
+        "develops": [
+          "claim:11"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The smaller signal matters because it breaks the easy story."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 13,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:13",
+        "kind": "consequence",
+        "text": "Selective completion leaves room for unfinished curiosity.",
+        "evidence_ids": [
+          "metric:completion"
+        ],
+        "develops": [
+          "claim:12"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Selective completion leaves room for unfinished curiosity."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 14,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:14",
+        "kind": "consequence",
+        "text": "The pattern is a balance between return and release.",
+        "evidence_ids": [
+          "metric:time-a"
+        ],
+        "develops": [
+          "claim:13"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The pattern is a balance between return and release."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      }
+    },
+    {
+      "page": 15,
+      "narrative_move": "close",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:closing",
+        "kind": "synthesis",
+        "text": "Breadth is the invitation; depth is the choice.",
+        "evidence_ids": [
+          "metric:time-a",
+          "metric:time-b"
+        ],
+        "develops": [
+          "claim:quant",
+          "claim:14"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Breadth is the invitation; depth is the choice."
+      },
+      "presentation": {
+        "kind": "closing",
+        "content": {
+          "quote": "The shelf opens through breadth, then holds through selective return."
+        }
+      }
+    }
+  ]
+}

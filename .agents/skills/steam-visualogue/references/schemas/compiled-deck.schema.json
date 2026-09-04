@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "compiled-deck.schema.json",
+  "title": "Compiled Steam Visualogue deck",
+  "type": "object",
+  "required": ["format", "locale", "catalog_version", "label_fingerprint", "title", "mode", "editorial_frame", "pages", "encoded_claims", "visible_identity_owner", "developed_claim_ids", "deck_schema_fingerprint", "compiled_deck_fingerprint"],
+  "properties": {
+    "format": {"const": "steam-visualogue-compiled-deck"},
+    "locale": {"enum": ["en-US", "zh-CN"]},
+    "catalog_version": {"type": "string", "minLength": 1},
+    "label_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "title": {"type": "string", "minLength": 1},
+    "mode": {"enum": ["thesis-led", "constellation-led"]},
+    "editorial_frame": {"type": "object"},
+    "pages": {"type": "array", "minItems": 12, "maxItems": 18, "items": {"$ref": "#/$defs/page"}},
+    "encoded_claims": {"type": "array", "items": {"type": "object"}},
+    "visible_identity_owner": {"type": "object", "additionalProperties": {"enum": ["headline", "renderer", "none"]}},
+    "developed_claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "deck_schema_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "compiled_deck_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "reader_audit": {"type": "object"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "reader_copy": {
+      "type": "object",
+      "required": ["headline"],
+      "properties": {
+        "headline": {"type": "string", "minLength": 1},
+        "support": {"type": "string", "minLength": 1},
+        "caption": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "subject": {"type": "object", "required": ["game_id", "asset_id"], "properties": {"game_id": {"type": "string"}, "asset_id": {"type": "string"}, "display_name": {"type": "string"}}, "additionalProperties": true},
+    "page": {
+      "type": "object",
+      "required": ["page", "narrative_move", "reader_question", "claim", "reader_copy", "presentation", "evidence_ids", "visible_game_ids", "asset_ids", "measure_bindings", "legend_bindings", "item_bindings", "encoding_kind", "encoded_claims", "visible_identity_owner", "developed_claim_ids"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "narrative_move": {"enum": ["establish", "quantify", "contrast", "deepen", "complicate", "connect", "synthesize", "close"]},
+        "reader_question": {"type": "string"},
+        "claim": {"type": "object"},
+        "reader_copy": {"$ref": "#/$defs/reader_copy"},
+        "presentation": {"type": "object", "required": ["kind", "content"]},
+        "evidence_ids": {"type": "array", "items": {"type": "string"}},
+        "visible_game_ids": {"type": "array", "items": {"type": "string"}},
+        "asset_ids": {"type": "array", "items": {"type": "string"}},
+        "measure_bindings": {"type": "array", "items": {"type": "object"}},
+        "legend_bindings": {"type": "array", "items": {"type": "object"}},
+        "item_bindings": {"type": "array", "items": {"type": "object"}},
+        "encoding_kind": {"type": "string"},
+        "encoded_claims": {"type": "array", "items": {"type": "object"}},
+        "visible_identity_owner": {"enum": ["headline", "renderer", "none"]},
+        "developed_claim_ids": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}

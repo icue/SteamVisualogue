@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agent-packet-set.schema.json",
+  "title": "Steam Visualogue agent packet set manifest",
+  "type": "object",
+  "required": ["format", "run_id", "stage", "source_fingerprints", "safe_to_dispatch", "packets"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-packet-set"},
+    "run_id": {"type": "string", "maxLength": 128},
+    "stage": {"type": "string", "enum": ["achievement-analysis", "editorial-curation", "editorial-synthesis", "focused-evidence", "artwork-inspection"]},
+    "source_fingerprints": {"type": "object", "additionalProperties": {"type": "string", "maxLength": 128}},
+    "safe_to_dispatch": {"type": "boolean"},
+    "selected_game_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^game:[1-9][0-9]*$"}},
+    "cache_hit_game_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^game:[1-9][0-9]*$"}},
+    "dispatched_game_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^game:[1-9][0-9]*$"}},
+    "selection_summary": {"type": "object", "additionalProperties": true},
+    "candidate_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "selected_set_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "analysis_contract_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "semantic_cache_scope": {"const": "private-run-cache"},
+    "selected_achievement_count": {"type": "integer", "minimum": 0},
+    "packets": {"type": "array", "items": {"$ref": "#/$defs/packet"}, "maxItems": 4096}
+  },
+  "$defs": {
+    "packet": {
+      "type": "object",
+      "required": ["packet_id", "path", "sha256", "utf8_bytes", "estimated_tokens", "item_count", "image_count", "total_pixels", "safe_to_dispatch"],
+      "properties": {
+        "packet_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+        "path": {"type": "string", "pattern": "^\\.agent-work/packets/[^/\\\\]+\\.json$"},
+        "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "utf8_bytes": {"type": "integer", "minimum": 0, "maximum": 73728},
+        "estimated_tokens": {"type": "integer", "minimum": 0, "maximum": 24000},
+        "item_count": {"type": "integer", "minimum": 0},
+        "image_count": {"type": "integer", "minimum": 0, "maximum": 8},
+        "total_pixels": {"type": "integer", "minimum": 0, "maximum": 10000000},
+        "safe_to_dispatch": {"const": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

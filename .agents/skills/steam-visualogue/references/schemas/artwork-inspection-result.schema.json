@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "artwork-inspection-result.schema.json",
+  "title": "Artwork inspection result",
+  "type": "object",
+  "required": ["format", "stage", "packet_id", "images"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-result"},
+    "stage": {"const": "artwork-inspection"},
+    "packet_id": {"type": "string"},
+    "images": {"type": "array", "maxItems": 8, "items": {"$ref": "#/$defs/image"}}
+  },
+  "$defs": {
+    "image": {
+      "type": "object",
+      "required": ["asset_id", "crop_safe", "small_size_legible", "tone", "dominant_geometry", "recommended_roles", "rejection_reason"],
+      "properties": {"asset_id": {"type": "string"}, "crop_safe": {"type": "boolean"}, "small_size_legible": {"type": "boolean"}, "tone": {"type": "string", "maxLength": 128}, "dominant_geometry": {"type": "string", "maxLength": 256}, "recommended_roles": {"type": "array", "maxItems": 8, "items": {"type": "string"}}, "rejection_reason": {"type": ["string", "null"], "maxLength": 512}},
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

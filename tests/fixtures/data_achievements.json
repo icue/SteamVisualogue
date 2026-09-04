@@ -1,0 +1,18 @@
+{
+  "player": [
+    {"apiname": "FIRST", "achieved": 1, "unlocktime": 1700000000}
+  ],
+  "schema": [
+    {
+      "name": "FIRST",
+      "displayName": "First Step",
+      "description": "Begin.",
+      "hidden": 0,
+      "icon": "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/10/first-color.jpg",
+      "icongray": "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/10/first-gray.jpg"
+    }
+  ],
+  "global": [
+    {"name": "FIRST", "percent": 12.5}
+  ]
+}

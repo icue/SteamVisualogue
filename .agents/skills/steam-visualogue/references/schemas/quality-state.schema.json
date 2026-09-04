@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quality-state.schema.json",
+  "title": "Steam Visualogue current quality state",
+  "type": "object",
+  "required": ["format", "state", "fingerprints", "gates"],
+  "properties": {
+    "format": {"const": "steam-visualogue-quality-state"},
+    "state": {"enum": ["not-ready", "passed", "stopped"]},
+    "fingerprints": {"type": "object", "required": ["reader", "visual", "factual"], "additionalProperties": {"type": "string"}},
+    "gates": {
+      "type": "object",
+      "required": ["reader", "visual", "factual"],
+      "additionalProperties": false,
+      "properties": {
+        "reader": {"$ref": "#/$defs/gate"},
+        "visual": {"$ref": "#/$defs/gate"},
+        "factual": {"$ref": "#/$defs/gate"}
+      }
+    },
+    "finalized_at": {"type": "string"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "gate": {
+      "type": "object",
+      "required": ["status", "attempt_id", "input_fingerprint", "must_fix", "polish"],
+      "properties": {
+        "status": {"enum": ["passed", "revision-required", "stopped", "not-started", "active", "stale"]},
+        "attempt_id": {"type": ["string", "null"]},
+        "input_fingerprint": {"type": ["string", "null"]},
+        "must_fix": {"type": "integer", "minimum": 0},
+        "polish": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    }
+  }
+}

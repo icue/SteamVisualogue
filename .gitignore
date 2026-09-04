@@ -1,0 +1,13 @@
+/.steam-visualogue.env
+/.steam-visualogue-cache.sqlite
+/.steam-visualogue-cache.sqlite-journal
+/.steam-visualogue-cache.sqlite-shm
+/.steam-visualogue-cache.sqlite-wal
+/.steam-visualogue-api-coordination.sqlite
+/.steam-visualogue-api-coordination.sqlite-journal
+/.steam-visualogue-api-coordination.sqlite-shm
+/.steam-visualogue-api-coordination.sqlite-wal
+/.steam-visualogue-settings.json
+/.codex/config.toml
+/output/
+**/__pycache__/

@@ -1,0 +1,15 @@
+{
+  "palette": {
+    "ground": "#121416",
+    "ink": "#F3F0E8",
+    "primary": "#C6533D",
+    "secondary": "#6F898B",
+    "accent": "#E4C75B",
+    "muted": "#8B8D8A"
+  },
+  "composition": "monocentric",
+  "density": "dense-background-sparse-foreground",
+  "mark_vocabulary": 2,
+  "rhythm": "slow-with-one-dominant-beat",
+  "closure": "quiet-and-open"
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "generated-asset-review.schema.json",
+  "title": "Visual review gate for one generated raw asset",
+  "type": "object",
+  "required": [
+    "kind",
+    "approved",
+    "no_text",
+    "no_numbers",
+    "no_logos_or_ui",
+    "no_personal_identifiers",
+    "no_reconstructed_game_art",
+    "not_factual_evidence",
+    "not_final_page"
+  ],
+  "properties": {
+    "kind": {
+      "enum": [
+        "abstract-background",
+        "abstract-motif",
+        "isolated-shape",
+        "single-illustration"
+      ]
+    },
+    "approved": {"const": true},
+    "no_text": {"const": true},
+    "no_numbers": {"const": true},
+    "no_logos_or_ui": {"const": true},
+    "no_personal_identifiers": {"const": true},
+    "no_reconstructed_game_art": {"const": true},
+    "not_factual_evidence": {"const": true},
+    "not_final_page": {"const": true}
+  },
+  "additionalProperties": false
+}

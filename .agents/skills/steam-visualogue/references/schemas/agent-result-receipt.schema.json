@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agent-result-receipt.schema.json",
+  "title": "Steam Visualogue agent result receipt",
+  "type": "object",
+  "required": ["format", "stage", "packet_id", "packet_sha256", "result_path", "result_sha256", "result_schema", "result_utf8_bytes", "references_valid", "source_fingerprints", "accepted"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-result-receipt"},
+    "stage": {"type": "string", "enum": ["achievement-analysis", "editorial-curation", "editorial-synthesis", "focused-evidence", "artwork-inspection"]},
+    "packet_id": {"type": "string"},
+    "packet_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "result_path": {"type": "string", "maxLength": 1024},
+    "result_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "result_schema": {"type": "string", "enum": ["achievement-analysis-result.schema.json", "editorial-curation-result.schema.json", "editorial-synthesis-result.schema.json", "focused-evidence-result.schema.json", "artwork-inspection-result.schema.json"]},
+    "result_utf8_bytes": {"type": "integer", "minimum": 0, "maximum": 24576},
+    "references_valid": {"const": true},
+    "source_fingerprints": {"type": "object", "additionalProperties": {"type": "string", "maxLength": 128}},
+    "accepted": {"const": true},
+    "failure_code": {"type": ["string", "null"], "maxLength": 80}
+  },
+  "additionalProperties": false
+}

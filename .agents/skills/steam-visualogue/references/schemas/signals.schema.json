@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "signals.schema.json",
+  "title": "Deterministic signals",
+  "type": "object",
+  "required": ["run_id"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "evidence_fingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "library": {"type": "object"},
+    "playtime": {"type": "object"},
+    "genres": {"type": "object"},
+    "release_era": {"type": "object"},
+    "achievements": {"type": "object"},
+    "visual": {"type": "object"},
+    "candidate_tensions": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

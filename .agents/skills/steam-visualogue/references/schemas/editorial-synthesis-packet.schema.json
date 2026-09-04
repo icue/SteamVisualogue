@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "editorial-synthesis-packet.schema.json",
+  "title": "Editorial synthesis packet",
+  "type": "object",
+  "required": ["format", "stage", "packet_id", "run_id", "source_fingerprints", "candidate_findings", "max_findings"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-packet"},
+    "stage": {"const": "editorial-synthesis"},
+    "packet_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "source_fingerprints": {"type": "object", "additionalProperties": {"type": "string"}},
+    "completion_criterion": {"type": "string", "maxLength": 1000},
+    "result_schema": {"type": "string"},
+    "candidate_findings": {"type": "array", "maxItems": 24, "items": {"type": "object", "required": ["id", "type", "claim", "evidence_ids", "confidence"], "properties": {"id": {"type": "string"}, "type": {"type": "string"}, "claim": {"type": "string", "maxLength": 1000}, "evidence_ids": {"type": "array", "maxItems": 24, "items": {"type": "string"}}, "confidence": {"enum": ["high", "medium", "low"]}, "warnings": {"type": "array", "maxItems": 8, "items": {"type": "string"}}, "recommended_role": {"type": ["string", "null"]}}, "additionalProperties": false}},
+    "max_findings": {"const": 20}
+  },
+  "additionalProperties": false
+}

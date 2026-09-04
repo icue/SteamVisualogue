@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "focused-evidence-packet.schema.json",
+  "title": "Focused evidence packet",
+  "type": "object",
+  "required": ["format", "stage", "packet_id", "run_id", "source_fingerprints", "completion_criterion", "result_schema", "evidence_id", "record"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-packet"},
+    "stage": {"const": "focused-evidence"},
+    "packet_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "source_fingerprints": {"type": "object", "additionalProperties": {"type": "string"}},
+    "completion_criterion": {"type": "string", "maxLength": 1000},
+    "result_schema": {"type": "string"},
+    "evidence_id": {"type": "string"},
+    "record": {"type": "object", "properties": {"id": {"type": "string"}, "type": {"type": "string"}, "facts": {"type": "array"}, "strength": {"type": "number"}, "coverage": {"type": "object"}, "source": {"type": "string"}, "confidence": {"type": "string"}, "related_ids": {"type": "array"}}, "additionalProperties": false}
+  },
+  "additionalProperties": false
+}

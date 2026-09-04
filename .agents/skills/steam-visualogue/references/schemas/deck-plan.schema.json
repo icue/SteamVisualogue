@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "deck-plan.schema.json",
+  "title": "Steam Visualogue editorial deck plan",
+  "type": "object",
+  "required": ["format", "locale", "title", "mode", "editorial_frame", "pages"],
+  "properties": {
+    "format": {"const": "steam-visualogue-deck-plan"},
+    "locale": {"enum": ["en-US", "zh-CN"]},
+    "title": {"type": "string", "minLength": 1, "maxLength": 300},
+    "mode": {"enum": ["thesis-led", "constellation-led"]},
+    "editorial_frame": {
+      "oneOf": [
+        {"$ref": "#/$defs/thesis_frame"},
+        {"$ref": "#/$defs/constellation_frame"}
+      ]
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 18,
+      "items": {"$ref": "#/$defs/page"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "claim_ref": {
+      "type": "object",
+      "required": ["claim_id", "kind", "text", "evidence_ids", "develops"],
+      "properties": {
+        "claim_id": {"type": "string", "minLength": 1, "maxLength": 200},
+        "kind": {"enum": ["relation", "magnitude", "contrast", "pattern", "anomaly", "consequence", "tension", "synthesis"]},
+        "text": {"type": "string", "minLength": 1, "maxLength": 1600},
+        "evidence_ids": {"$ref": "#/$defs/evidence_ids"},
+        "develops": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "cluster_id": {"type": "string", "minLength": 1, "maxLength": 160}
+      },
+      "additionalProperties": false
+    },
+    "thesis_frame": {
+      "type": "object",
+      "required": ["guiding_question", "thesis"],
+      "properties": {
+        "guiding_question": {"type": "string", "minLength": 1, "maxLength": 600},
+        "thesis": {
+          "type": "object",
+          "required": ["claim_id", "text", "evidence_ids"],
+          "properties": {
+            "claim_id": {"type": "string", "minLength": 1, "maxLength": 200},
+            "text": {"type": "string", "minLength": 1, "maxLength": 1600},
+            "evidence_ids": {"$ref": "#/$defs/evidence_ids"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "cluster": {
+      "type": "object",
+      "required": ["cluster_id", "title"],
+      "properties": {
+        "cluster_id": {"type": "string", "minLength": 1, "maxLength": 160},
+        "title": {"type": "string", "minLength": 1, "maxLength": 300},
+        "question": {"type": "string", "minLength": 1, "maxLength": 600}
+      },
+      "additionalProperties": false
+    },
+    "constellation_frame": {
+      "type": "object",
+      "required": ["organizing_question", "clusters"],
+      "properties": {
+        "organizing_question": {"type": "string", "minLength": 1, "maxLength": 600},
+        "clusters": {"type": "array", "minItems": 2, "maxItems": 4, "items": {"$ref": "#/$defs/cluster"}}
+      },
+      "additionalProperties": false
+    },
+    "reader_copy": {
+      "type": "object",
+      "required": ["headline"],
+      "properties": {
+        "headline": {"type": "string", "minLength": 1, "maxLength": 700},
+        "support": {"type": "string", "minLength": 1, "maxLength": 1800},
+        "caption": {"type": "string", "minLength": 1, "maxLength": 900},
+        "caption_required": {"const": true},
+        "caption_reason": {"type": "string", "minLength": 1, "maxLength": 500}
+      },
+      "additionalProperties": false
+    },
+    "presentation": {
+      "type": "object",
+      "required": ["kind", "content"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "opening", "hero", "archive-density", "evidence-ledger",
+            "quantitative-comparison", "qualitative-comparison", "series-atlas",
+            "pattern-atlas", "temporal-strata", "achievement-anomaly",
+            "abstract-portrait", "closing"
+          ]
+        },
+        "content": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "page": {
+      "type": "object",
+      "required": ["page", "narrative_move", "reader_question", "claim", "reader_copy", "presentation"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "narrative_move": {"enum": ["establish", "quantify", "contrast", "deepen", "complicate", "connect", "synthesize", "close"]},
+        "reader_question": {"type": "string", "minLength": 1, "maxLength": 700},
+        "claim": {"$ref": "#/$defs/claim_ref"},
+        "reader_copy": {"$ref": "#/$defs/reader_copy"},
+        "presentation": {"$ref": "#/$defs/presentation"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

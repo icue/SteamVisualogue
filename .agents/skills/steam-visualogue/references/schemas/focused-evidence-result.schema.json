@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "focused-evidence-result.schema.json",
+  "title": "Focused evidence result",
+  "type": "object",
+  "required": ["format", "stage", "packet_id", "evidence_id", "supported"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-result"},
+    "stage": {"const": "focused-evidence"},
+    "packet_id": {"type": "string"},
+    "evidence_id": {"type": "string"},
+    "supported": {"type": "boolean"},
+    "notes": {"type": "string", "maxLength": 1000}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "achievement-analysis-result.schema.json",
+  "title": "Achievement semantic analysis result",
+  "type": "object",
+  "required": ["format", "stage", "packet_id", "games"],
+  "properties": {
+    "format": {"const": "steam-visualogue-agent-result"},
+    "stage": {"const": "achievement-analysis"},
+    "packet_id": {"type": "string"},
+    "games": {"type": "array", "items": {"$ref": "#/$defs/game"}}
+  },
+  "$defs": {
+    "game": {
+      "type": "object",
+      "required": ["game_id", "classifications", "interesting_cases", "mutual_exclusion_risks", "safe_claims", "unsafe_claims", "evidence_ids"],
+      "properties": {
+        "game_id": {"type": "string", "pattern": "^game:[1-9][0-9]*$"},
+        "classifications": {"type": "array", "maxItems": 12, "items": {"type": "string", "maxLength": 256}},
+        "interesting_cases": {"type": "array", "maxItems": 12, "items": {"type": "string", "maxLength": 512}},
+        "mutual_exclusion_risks": {"type": "array", "maxItems": 12, "items": {"type": "string", "maxLength": 512}},
+        "safe_claims": {"type": "array", "maxItems": 12, "items": {"type": "string", "maxLength": 512}},
+        "unsafe_claims": {"type": "array", "maxItems": 12, "items": {"type": "string", "maxLength": 512}},
+        "evidence_ids": {"type": "array", "maxItems": 24, "uniqueItems": true, "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

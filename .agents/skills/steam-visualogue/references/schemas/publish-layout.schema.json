@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "publish-layout.schema.json",
+  "title": "Steam Visualogue publish layout",
+  "type": "object",
+  "required": ["format", "locale", "catalog_version", "label_fingerprint", "working_size", "final_size", "pages", "deck_schema_fingerprint", "compiled_deck_fingerprint", "visual_brief_fingerprint", "layout_input_fingerprint", "font_families"],
+  "properties": {
+    "format": {"const": "steam-visualogue-publish-layout"},
+    "locale": {"enum": ["en-US", "zh-CN"]},
+    "catalog_version": {"type": "string", "minLength": 1},
+    "label_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "working_size": {"type": "array", "prefixItems": [{"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 1}], "items": false},
+    "final_size": {"type": "array", "prefixItems": [{"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 1}], "items": false},
+    "palette": {"type": "object"},
+    "deck_schema_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "compiled_deck_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "visual_brief_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "layout_input_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "font_families": {
+      "type": "object",
+      "required": ["regular", "bold"],
+      "properties": {"regular": {"type": "string", "minLength": 1}, "bold": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "pages": {"type": "array", "minItems": 12, "maxItems": 18, "items": {"$ref": "#/$defs/page"}},
+    "machine_metadata": {"type": "object"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "element": {
+      "type": "object",
+      "required": ["id", "type", "x", "y", "w", "h", "width", "height"],
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"enum": ["text", "image", "mark"]},
+        "x": {"type": "number"}, "y": {"type": "number"}, "w": {"type": "number", "minimum": 0}, "h": {"type": "number", "minimum": 0},
+        "width": {"type": "number", "minimum": 0}, "height": {"type": "number", "minimum": 0},
+        "text": {"type": "string"}, "lines": {"type": "array", "items": {"type": "string"}},
+        "semantic_role": {"type": "string"}, "asset_id": {"type": "string"}, "shape": {"type": "string"},
+        "evidence_ids": {"type": "array", "items": {"type": "string"}}, "requires_evidence": {"type": "boolean"},
+        "decorative": {"type": "boolean"}, "scale_factor": {"type": "number", "maximum": 1.5}
+      },
+      "additionalProperties": true
+    },
+    "page": {
+      "type": "object",
+      "required": ["page", "reader_title", "composition", "visible_identity_owner", "visible_game_ids", "asset_ids", "elements", "layout_metrics", "machine_metadata"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "background": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+        "reader_title": {"type": "string"},
+        "composition": {"enum": ["hero-anchor", "archive-waffle", "evidence-ledger", "comparison-bars", "comparison-equal-cards", "comparison-stacked-cards", "atlas-grid", "temporal-rows", "anomaly-split"]},
+        "visible_identity_owner": {"enum": ["headline", "renderer", "none"]},
+        "visible_game_ids": {"type": "array", "items": {"type": "string"}},
+        "asset_ids": {"type": "array", "items": {"type": "string"}},
+        "elements": {"type": "array", "items": {"$ref": "#/$defs/element"}},
+        "layout_metrics": {
+          "type": "object",
+          "required": ["card_content", "visible_text_count", "visible_image_count", "lower_anchor"],
+          "properties": {
+            "card_content": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["element_id", "content_bbox", "occupancy_ratio"],
+                "properties": {
+                  "element_id": {"type": "string"},
+                  "content_bbox": {"type": "array", "prefixItems": [{"type": "number"}, {"type": "number"}, {"type": "number", "minimum": 0}, {"type": "number", "minimum": 0}], "items": false},
+                  "occupancy_ratio": {"type": "number", "minimum": 0, "maximum": 1}
+                },
+                "additionalProperties": false
+              }
+            },
+            "visible_text_count": {"type": "integer", "minimum": 0},
+            "visible_image_count": {"type": "integer", "minimum": 0},
+            "lower_anchor": {"type": "boolean"}
+          },
+          "additionalProperties": false
+        },
+        "machine_metadata": {"type": "object"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

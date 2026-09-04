@@ -1,0 +1,129 @@
+{
+  "run_id": "analytics-fixture",
+  "player_alias": "Fixture Player",
+  "generated_at": "2025-06-15T12:00:00Z",
+  "games": [
+    {
+      "appid": 10,
+      "name": "Game One",
+      "playtime_minutes": 600,
+      "metadata": {
+        "genres": ["Role-Playing", "Strategy", "Indie"],
+        "release_date": "1 Jan, 2000"
+      },
+      "artwork_url": "https://example.invalid/10.jpg",
+      "achievements": {
+        "status": "ok",
+        "items": [
+          {
+            "api_name": "ACH_A",
+            "name": "A",
+            "description": "Rare unlock",
+            "achieved": true,
+            "unlock_time": 1704067200,
+            "global_percent": 2.0,
+            "hidden": false
+          },
+          {
+            "api_name": "ACH_B",
+            "name": "B",
+            "description": "Second unlock",
+            "achieved": true,
+            "unlock_time": 1704070800,
+            "global_percent": 50.0,
+            "hidden": false
+          },
+          {
+            "api_name": "ACH_C",
+            "name": "C",
+            "description": "Rarest unlock",
+            "achieved": true,
+            "unlock_time": 1704074400,
+            "global_percent": 0.5,
+            "hidden": true
+          },
+          {
+            "api_name": "ACH_D",
+            "name": "D",
+            "description": "Common missing unlock",
+            "achieved": false,
+            "unlock_time": 0,
+            "global_percent": 90.0,
+            "hidden": false
+          },
+          {
+            "api_name": "ACH_E",
+            "name": "E",
+            "description": "Later unlock",
+            "achieved": true,
+            "unlock_time": 1711929600,
+            "global_percent": 70.0,
+            "hidden": false
+          }
+        ]
+      },
+      "data_status": {}
+    },
+    {
+      "appid": 20,
+      "name": "Game Two",
+      "playtime_minutes": 300,
+      "metadata": {
+        "genres": ["Action", "Free to Play"],
+        "release_date": "2020-05-01"
+      },
+      "artwork_url": "https://example.invalid/20.jpg",
+      "achievements": {
+        "status": "ok",
+        "items": [
+          {
+            "api_name": "ACH_FIRST",
+            "name": "First",
+            "description": "First dated unlock",
+            "achieved": true,
+            "unlock_time": 1640995200,
+            "global_percent": 40.0,
+            "hidden": false
+          },
+          {
+            "api_name": "ACH_LAST",
+            "name": "Last",
+            "description": "Last dated unlock",
+            "achieved": true,
+            "unlock_time": 1672531200,
+            "global_percent": 100.0,
+            "hidden": false
+          }
+        ]
+      },
+      "data_status": {}
+    },
+    {
+      "appid": 30,
+      "name": "Game Three",
+      "playtime_minutes": 100,
+      "metadata": {
+        "genres": ["Action", "Adventure", "Early Access"],
+        "release_year": 2010
+      },
+      "artwork_url": null,
+      "achievements": {
+        "status": "unsupported",
+        "items": []
+      },
+      "data_status": {}
+    },
+    {
+      "appid": 40,
+      "name": "Game Four",
+      "playtime_minutes": 0,
+      "metadata": {},
+      "artwork_url": null,
+      "achievements": {
+        "status": "unavailable",
+        "items": []
+      },
+      "data_status": {}
+    }
+  ]
+}

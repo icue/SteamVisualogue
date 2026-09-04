@@ -1,0 +1,1352 @@
+{
+  "format": "steam-visualogue-compiled-deck",
+  "locale": "en-US",
+  "catalog_version": "steam-visualogue-catalog",
+  "label_fingerprint": "sha256:bf3e030f7e6322e7c6aeefed8862d1600f6ea0d0a2e16e3013d261fb4ecb89b9",
+  "title": "A Broad Shelf, Selective Depth",
+  "mode": "thesis-led",
+  "editorial_frame": {
+    "guiding_question": "What does this pattern say about the way the library is lived?",
+    "thesis": {
+      "claim_id": "claim:thesis",
+      "text": "A broad shelf becomes deep through selective returns.",
+      "evidence_ids": [
+        "metric:library-count",
+        "metric:time-a"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "page": 1,
+      "narrative_move": "establish",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:opening",
+        "kind": "tension",
+        "text": "The library starts wide, then finds a few deep channels.",
+        "evidence_ids": [
+          "metric:library-count"
+        ],
+        "develops": []
+      },
+      "reader_copy": {
+        "headline": "The library starts wide, then finds a few deep channels."
+      },
+      "presentation": {
+        "kind": "opening",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:library-count"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "opening",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "opening",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:opening"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": []
+    },
+    {
+      "page": 2,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:hero",
+        "kind": "relation",
+        "text": "One title becomes the first deep channel.",
+        "evidence_ids": [
+          "game:1"
+        ],
+        "develops": [
+          "claim:thesis"
+        ]
+      },
+      "reader_copy": {
+        "headline": "One title becomes the first deep channel."
+      },
+      "presentation": {
+        "kind": "hero",
+        "content": {
+          "subject": {
+            "game_id": "game:1",
+            "asset_id": "game:1:portrait",
+            "display_name": "Game 1"
+          }
+        }
+      },
+      "evidence_ids": [
+        "game:1"
+      ],
+      "visible_game_ids": [
+        "game:1"
+      ],
+      "asset_ids": [
+        "game:1:portrait"
+      ],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "hero",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "hero",
+          "games": [
+            "game:1"
+          ],
+          "achievements": [],
+          "assets": [
+            "game:1:portrait"
+          ],
+          "measures": [],
+          "claim_id": "claim:hero"
+        }
+      ],
+      "visible_identity_owner": "renderer",
+      "developed_claim_ids": [
+        "claim:thesis"
+      ]
+    },
+    {
+      "page": 3,
+      "narrative_move": "quantify",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:completion",
+        "kind": "magnitude",
+        "text": "Completion is selective, not uniform.",
+        "evidence_ids": [
+          "metric:completion"
+        ],
+        "develops": [
+          "claim:hero"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Completion is selective, not uniform."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:completion"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:completion"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:hero"
+      ]
+    },
+    {
+      "page": 4,
+      "narrative_move": "contrast",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:quant",
+        "kind": "contrast",
+        "text": "A fourfold gap changes the route.",
+        "evidence_ids": [
+          "game:2",
+          "game:3"
+        ],
+        "develops": [
+          "claim:completion"
+        ]
+      },
+      "reader_copy": {
+        "headline": "A fourfold gap changes the route."
+      },
+      "presentation": {
+        "kind": "quantitative-comparison",
+        "content": {
+          "shared_question": "Which title holds attention longer?",
+          "shared_dimension": "time spent",
+          "relationship_claim_id": "claim:quant",
+          "items": [
+            {
+              "subject": {
+                "game_id": "game:2",
+                "asset_id": "game:2:portrait",
+                "display_name": "Game 2"
+              },
+              "measure": {
+                "raw_value": 480,
+                "dimension": "duration",
+                "canonical_unit": "minutes",
+                "display_value": "8.0",
+                "evidence_id": "game:2",
+                "fact": "playtime_minutes",
+                "format": {
+                  "kind": "hours",
+                  "precision": 1
+                },
+                "canonical_value": 480,
+                "numeric_value": 480
+              },
+              "evidence_ids": [
+                "game:2"
+              ]
+            },
+            {
+              "subject": {
+                "game_id": "game:3",
+                "asset_id": "game:3:portrait",
+                "display_name": "Game 3"
+              },
+              "measure": {
+                "raw_value": 120,
+                "dimension": "duration",
+                "canonical_unit": "minutes",
+                "display_value": "2.0",
+                "evidence_id": "game:3",
+                "fact": "playtime_minutes",
+                "format": {
+                  "kind": "hours",
+                  "precision": 1
+                },
+                "canonical_value": 120,
+                "numeric_value": 120
+              },
+              "evidence_ids": [
+                "game:3"
+              ]
+            }
+          ]
+        }
+      },
+      "evidence_ids": [
+        "game:2",
+        "game:3"
+      ],
+      "visible_game_ids": [
+        "game:2",
+        "game:3"
+      ],
+      "asset_ids": [
+        "game:2:portrait",
+        "game:3:portrait"
+      ],
+      "measure_bindings": [
+        {
+          "raw_value": 480,
+          "dimension": "duration",
+          "canonical_unit": "minutes",
+          "display_value": "8.0",
+          "evidence_id": "game:2",
+          "fact": "playtime_minutes",
+          "format": {
+            "kind": "hours",
+            "precision": 1
+          },
+          "canonical_value": 480,
+          "numeric_value": 480
+        },
+        {
+          "raw_value": 120,
+          "dimension": "duration",
+          "canonical_unit": "minutes",
+          "display_value": "2.0",
+          "evidence_id": "game:3",
+          "fact": "playtime_minutes",
+          "format": {
+            "kind": "hours",
+            "precision": 1
+          },
+          "canonical_value": 120,
+          "numeric_value": 120
+        }
+      ],
+      "legend_bindings": [],
+      "item_bindings": [
+        {
+          "game_id": "game:2",
+          "asset_id": "game:2:portrait",
+          "measure": {
+            "raw_value": 480,
+            "dimension": "duration",
+            "canonical_unit": "minutes",
+            "display_value": "8.0",
+            "evidence_id": "game:2",
+            "fact": "playtime_minutes",
+            "format": {
+              "kind": "hours",
+              "precision": 1
+            },
+            "canonical_value": 480,
+            "numeric_value": 480
+          }
+        },
+        {
+          "game_id": "game:3",
+          "asset_id": "game:3:portrait",
+          "measure": {
+            "raw_value": 120,
+            "dimension": "duration",
+            "canonical_unit": "minutes",
+            "display_value": "2.0",
+            "evidence_id": "game:3",
+            "fact": "playtime_minutes",
+            "format": {
+              "kind": "hours",
+              "precision": 1
+            },
+            "canonical_value": 120,
+            "numeric_value": 120
+          }
+        }
+      ],
+      "encoding_kind": "quantitative-comparison",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "quantitative-comparison",
+          "games": [
+            "game:2",
+            "game:3"
+          ],
+          "achievements": [],
+          "assets": [
+            "game:2:portrait",
+            "game:3:portrait"
+          ],
+          "measures": [
+            {
+              "raw_value": 480,
+              "dimension": "duration",
+              "canonical_unit": "minutes",
+              "display_value": "8.0",
+              "evidence_id": "game:2",
+              "fact": "playtime_minutes",
+              "format": {
+                "kind": "hours",
+                "precision": 1
+              },
+              "canonical_value": 480,
+              "numeric_value": 480
+            },
+            {
+              "raw_value": 120,
+              "dimension": "duration",
+              "canonical_unit": "minutes",
+              "display_value": "2.0",
+              "evidence_id": "game:3",
+              "fact": "playtime_minutes",
+              "format": {
+                "kind": "hours",
+                "precision": 1
+              },
+              "canonical_value": 120,
+              "numeric_value": 120
+            }
+          ],
+          "claim_id": "claim:quant"
+        }
+      ],
+      "visible_identity_owner": "renderer",
+      "developed_claim_ids": [
+        "claim:completion"
+      ]
+    },
+    {
+      "page": 5,
+      "narrative_move": "contrast",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:qual",
+        "kind": "contrast",
+        "text": "Two kinds of staying can share one shelf.",
+        "evidence_ids": [
+          "game:4",
+          "game:5"
+        ],
+        "develops": [
+          "claim:quant"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Two kinds of staying can share one shelf."
+      },
+      "presentation": {
+        "kind": "qualitative-comparison",
+        "content": {
+          "shared_question": "What makes a title worth returning to?",
+          "shared_dimension": "reason to return",
+          "relationship_claim_id": "claim:qual",
+          "items": [
+            {
+              "subject": {
+                "game_id": "game:4",
+                "asset_id": "game:4:header",
+                "display_name": "Game 4"
+              },
+              "statement": "It turns a difficult task into a familiar rhythm.",
+              "evidence_ids": [
+                "game:4"
+              ]
+            },
+            {
+              "subject": {
+                "game_id": "game:5",
+                "asset_id": "game:5:header",
+                "display_name": "Game 5"
+              },
+              "statement": "It leaves a bounded experience that feels complete.",
+              "evidence_ids": [
+                "game:5"
+              ]
+            }
+          ]
+        }
+      },
+      "evidence_ids": [
+        "game:4",
+        "game:5"
+      ],
+      "visible_game_ids": [
+        "game:4",
+        "game:5"
+      ],
+      "asset_ids": [
+        "game:4:header",
+        "game:5:header"
+      ],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [
+        {
+          "game_id": "game:4",
+          "asset_id": "game:4:header",
+          "measure": null,
+          "evidence_ids": [
+            "game:4"
+          ]
+        },
+        {
+          "game_id": "game:5",
+          "asset_id": "game:5:header",
+          "measure": null,
+          "evidence_ids": [
+            "game:5"
+          ]
+        }
+      ],
+      "encoding_kind": "qualitative-comparison",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "qualitative-comparison",
+          "games": [
+            "game:4",
+            "game:5"
+          ],
+          "achievements": [],
+          "assets": [
+            "game:4:header",
+            "game:5:header"
+          ],
+          "measures": [],
+          "claim_id": "claim:qual"
+        }
+      ],
+      "visible_identity_owner": "renderer",
+      "developed_claim_ids": [
+        "claim:quant"
+      ]
+    },
+    {
+      "page": 6,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:6",
+        "kind": "pattern",
+        "text": "Breadth supplies more than a list of categories.",
+        "evidence_ids": [
+          "metric:library-count"
+        ],
+        "develops": [
+          "claim:qual"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Breadth supplies more than a list of categories."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:library-count"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:6"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:qual"
+      ]
+    },
+    {
+      "page": 7,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:7",
+        "kind": "consequence",
+        "text": "The longest return is concentrated, not constant.",
+        "evidence_ids": [
+          "metric:time-a"
+        ],
+        "develops": [
+          "claim:6"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The longest return is concentrated, not constant."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:time-a"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:7"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:6"
+      ]
+    },
+    {
+      "page": 8,
+      "narrative_move": "complicate",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:8",
+        "kind": "consequence",
+        "text": "Shorter sessions still change the shape of the shelf.",
+        "evidence_ids": [
+          "metric:time-b"
+        ],
+        "develops": [
+          "claim:7"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Shorter sessions still change the shape of the shelf."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:time-b"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:8"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:7"
+      ]
+    },
+    {
+      "page": 9,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:9",
+        "kind": "pattern",
+        "text": "The middle ground is where the library keeps its tension.",
+        "evidence_ids": [
+          "metric:completion"
+        ],
+        "develops": [
+          "claim:8"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The middle ground is where the library keeps its tension."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:completion"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:9"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:8"
+      ]
+    },
+    {
+      "page": 10,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:10",
+        "kind": "consequence",
+        "text": "A broad shelf can still have a narrow center of gravity.",
+        "evidence_ids": [
+          "metric:library-count"
+        ],
+        "develops": [
+          "claim:9"
+        ]
+      },
+      "reader_copy": {
+        "headline": "A broad shelf can still have a narrow center of gravity."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:library-count"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:10"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:9"
+      ]
+    },
+    {
+      "page": 11,
+      "narrative_move": "complicate",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:11",
+        "kind": "consequence",
+        "text": "Depth appears as a rhythm rather than a permanent state.",
+        "evidence_ids": [
+          "metric:time-a"
+        ],
+        "develops": [
+          "claim:10"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Depth appears as a rhythm rather than a permanent state."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:time-a"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:11"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:10"
+      ]
+    },
+    {
+      "page": 12,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:12",
+        "kind": "pattern",
+        "text": "The smaller signal matters because it breaks the easy story.",
+        "evidence_ids": [
+          "metric:time-b"
+        ],
+        "develops": [
+          "claim:11"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The smaller signal matters because it breaks the easy story."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:time-b"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:12"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:11"
+      ]
+    },
+    {
+      "page": 13,
+      "narrative_move": "deepen",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:13",
+        "kind": "consequence",
+        "text": "Selective completion leaves room for unfinished curiosity.",
+        "evidence_ids": [
+          "metric:completion"
+        ],
+        "develops": [
+          "claim:12"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Selective completion leaves room for unfinished curiosity."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:completion"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:13"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:12"
+      ]
+    },
+    {
+      "page": 14,
+      "narrative_move": "connect",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:14",
+        "kind": "consequence",
+        "text": "The pattern is a balance between return and release.",
+        "evidence_ids": [
+          "metric:time-a"
+        ],
+        "develops": [
+          "claim:13"
+        ]
+      },
+      "reader_copy": {
+        "headline": "The pattern is a balance between return and release."
+      },
+      "presentation": {
+        "kind": "abstract-portrait",
+        "content": {}
+      },
+      "evidence_ids": [
+        "metric:time-a"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "abstract-portrait",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:14"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:13"
+      ]
+    },
+    {
+      "page": 15,
+      "narrative_move": "close",
+      "reader_question": "What does this pattern say about the way the library is lived?",
+      "claim": {
+        "claim_id": "claim:closing",
+        "kind": "synthesis",
+        "text": "Breadth is the invitation; depth is the choice.",
+        "evidence_ids": [
+          "metric:time-a",
+          "metric:time-b"
+        ],
+        "develops": [
+          "claim:quant",
+          "claim:14"
+        ]
+      },
+      "reader_copy": {
+        "headline": "Breadth is the invitation; depth is the choice."
+      },
+      "presentation": {
+        "kind": "closing",
+        "content": {
+          "quote": "The shelf opens through breadth, then holds through selective return."
+        }
+      },
+      "evidence_ids": [
+        "metric:time-a",
+        "metric:time-b"
+      ],
+      "visible_game_ids": [],
+      "asset_ids": [],
+      "measure_bindings": [],
+      "legend_bindings": [],
+      "item_bindings": [],
+      "encoding_kind": "closing",
+      "encoded_claims": [
+        {
+          "field": "presentation.content",
+          "kind": "closing",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:closing"
+        }
+      ],
+      "visible_identity_owner": "none",
+      "developed_claim_ids": [
+        "claim:14",
+        "claim:quant"
+      ]
+    }
+  ],
+  "encoded_claims": [
+    {
+      "page": 1,
+      "claim_id": "claim:opening",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "opening",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:opening"
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "claim_id": "claim:hero",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "hero",
+          "games": [
+            "game:1"
+          ],
+          "achievements": [],
+          "assets": [
+            "game:1:portrait"
+          ],
+          "measures": [],
+          "claim_id": "claim:hero"
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "claim_id": "claim:completion",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:completion"
+        }
+      ]
+    },
+    {
+      "page": 4,
+      "claim_id": "claim:quant",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "quantitative-comparison",
+          "games": [
+            "game:2",
+            "game:3"
+          ],
+          "achievements": [],
+          "assets": [
+            "game:2:portrait",
+            "game:3:portrait"
+          ],
+          "measures": [
+            {
+              "raw_value": 480,
+              "dimension": "duration",
+              "canonical_unit": "minutes",
+              "display_value": "8.0",
+              "evidence_id": "game:2",
+              "fact": "playtime_minutes",
+              "format": {
+                "kind": "hours",
+                "precision": 1
+              },
+              "canonical_value": 480,
+              "numeric_value": 480
+            },
+            {
+              "raw_value": 120,
+              "dimension": "duration",
+              "canonical_unit": "minutes",
+              "display_value": "2.0",
+              "evidence_id": "game:3",
+              "fact": "playtime_minutes",
+              "format": {
+                "kind": "hours",
+                "precision": 1
+              },
+              "canonical_value": 120,
+              "numeric_value": 120
+            }
+          ],
+          "claim_id": "claim:quant"
+        }
+      ]
+    },
+    {
+      "page": 5,
+      "claim_id": "claim:qual",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "qualitative-comparison",
+          "games": [
+            "game:4",
+            "game:5"
+          ],
+          "achievements": [],
+          "assets": [
+            "game:4:header",
+            "game:5:header"
+          ],
+          "measures": [],
+          "claim_id": "claim:qual"
+        }
+      ]
+    },
+    {
+      "page": 6,
+      "claim_id": "claim:6",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:6"
+        }
+      ]
+    },
+    {
+      "page": 7,
+      "claim_id": "claim:7",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:7"
+        }
+      ]
+    },
+    {
+      "page": 8,
+      "claim_id": "claim:8",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:8"
+        }
+      ]
+    },
+    {
+      "page": 9,
+      "claim_id": "claim:9",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:9"
+        }
+      ]
+    },
+    {
+      "page": 10,
+      "claim_id": "claim:10",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:10"
+        }
+      ]
+    },
+    {
+      "page": 11,
+      "claim_id": "claim:11",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:11"
+        }
+      ]
+    },
+    {
+      "page": 12,
+      "claim_id": "claim:12",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:12"
+        }
+      ]
+    },
+    {
+      "page": 13,
+      "claim_id": "claim:13",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:13"
+        }
+      ]
+    },
+    {
+      "page": 14,
+      "claim_id": "claim:14",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "abstract-portrait",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:14"
+        }
+      ]
+    },
+    {
+      "page": 15,
+      "claim_id": "claim:closing",
+      "items": [
+        {
+          "field": "presentation.content",
+          "kind": "closing",
+          "games": [],
+          "achievements": [],
+          "assets": [],
+          "measures": [],
+          "claim_id": "claim:closing"
+        }
+      ]
+    }
+  ],
+  "visible_identity_owner": {
+    "1": "none",
+    "2": "renderer",
+    "3": "none",
+    "4": "renderer",
+    "5": "renderer",
+    "6": "none",
+    "7": "none",
+    "8": "none",
+    "9": "none",
+    "10": "none",
+    "11": "none",
+    "12": "none",
+    "13": "none",
+    "14": "none",
+    "15": "none"
+  },
+  "developed_claim_ids": [
+    "claim:10",
+    "claim:11",
+    "claim:12",
+    "claim:13",
+    "claim:14",
+    "claim:6",
+    "claim:7",
+    "claim:8",
+    "claim:9",
+    "claim:completion",
+    "claim:hero",
+    "claim:qual",
+    "claim:quant",
+    "claim:thesis"
+  ],
+  "deck_schema_fingerprint": "sha256:351412b0ce6c2633b84962303f9b9eb57a5b81e9e550959ba87e85e5196def37",
+  "reader_audit": {
+    "passed": true,
+    "issues": [],
+    "pages": [
+      {
+        "page": 1,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 2,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 3,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 4,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 5,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 6,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 7,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 8,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 9,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 10,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 11,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 12,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 13,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 14,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      },
+      {
+        "page": 15,
+        "headline_gain": "pass",
+        "reason": "headline adds a reader-facing observation beyond the encoding"
+      }
+    ]
+  },
+  "compiled_deck_fingerprint": "sha256:b572381286325e29b4260bd77a4b8cf81d65a1b89a7c25fd8c48a8153e958605"
+}

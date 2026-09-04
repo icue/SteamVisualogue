@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "art-direction.schema.json",
+  "title": "Deck art direction",
+  "type": "object",
+  "required": ["palette", "composition", "density", "rhythm", "closure"],
+  "properties": {
+    "palette": {
+      "type": "object",
+      "required": ["ground", "ink", "primary", "secondary", "accent"],
+      "additionalProperties": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"}
+    },
+    "composition": {"type": "string"},
+    "density": {"type": "string"},
+    "mark_vocabulary": {"type": "integer", "minimum": 1, "maximum": 3},
+    "hero_scale": {"type": "number", "minimum": 0.25, "maximum": 0.9},
+    "whitespace": {"type": "number", "minimum": 0.15, "maximum": 0.75},
+    "rhythm": {"type": "string"},
+    "closure": {"type": "string"},
+    "temporal_structure": {"type": "string"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "run-config.schema.json",
+  "title": "Steam Visualogue run configuration",
+  "type": "object",
+  "required": ["format", "report_locale"],
+  "properties": {
+    "format": {"const": "steam-visualogue-run-config"},
+    "report_locale": {"enum": ["en-US", "zh-CN"]}
+  },
+  "additionalProperties": false
+}

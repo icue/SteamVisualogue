@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quality-result.schema.json",
+  "title": "Steam Visualogue quality result",
+  "type": "object",
+  "required": ["format", "gate", "attempt_id", "packet_id", "input_fingerprint", "pages", "deck_verdict", "findings"],
+  "properties": {
+    "format": {"const": "steam-visualogue-quality-result"},
+    "gate": {"enum": ["reader", "visual", "factual"]},
+    "attempt_id": {"type": "string", "pattern": "^(reader|visual|factual)-0[12]$"},
+    "packet_id": {"type": "string", "minLength": 1},
+    "input_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "pages": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/page"}},
+    "deck_verdict": {"$ref": "#/$defs/deck_verdict"},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "recommended_changes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "verdict": {
+      "type": "object",
+      "required": ["status", "reason"],
+      "properties": {"status": {"enum": ["pass", "fail", "not-applicable"]}, "reason": {"type": "string", "minLength": 1, "maxLength": 1200}},
+      "additionalProperties": false
+    },
+    "page": {
+      "type": "object",
+      "required": ["page", "headline_gain", "support_gain", "identity_once", "reader_voice", "comparison_relation", "publish_surface"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "headline_gain": {"$ref": "#/$defs/verdict"},
+        "support_gain": {"$ref": "#/$defs/verdict"},
+        "identity_once": {"$ref": "#/$defs/verdict"},
+        "reader_voice": {"$ref": "#/$defs/verdict"},
+        "comparison_relation": {"$ref": "#/$defs/verdict"},
+        "publish_surface": {"$ref": "#/$defs/verdict"}
+      },
+      "additionalProperties": false
+    },
+    "deck_verdict": {
+      "type": "object",
+      "required": ["mode_fit", "progression", "claim_repetition", "opening_closing", "visual_rhythm"],
+      "properties": {
+        "mode_fit": {"$ref": "#/$defs/verdict"},
+        "progression": {"$ref": "#/$defs/verdict"},
+        "claim_repetition": {"$ref": "#/$defs/verdict"},
+        "opening_closing": {"$ref": "#/$defs/verdict"},
+        "visual_rhythm": {"$ref": "#/$defs/verdict"}
+      },
+      "additionalProperties": false
+    },
+    "location": {
+      "type": "object",
+      "required": ["page", "field"],
+      "properties": {"page": {"type": "integer", "minimum": 1}, "field": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "required": ["category", "severity", "locations", "explanation", "recommendation"],
+      "properties": {
+        "category": {"type": "string", "minLength": 1, "maxLength": 160},
+        "severity": {"enum": ["must-fix", "polish"]},
+        "locations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/location"}},
+        "explanation": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "recommendation": {"type": "string", "minLength": 1, "maxLength": 1200}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "output-manifest.schema.json",
+  "title": "Steam Visualogue public output manifest",
+  "type": "object",
+  "required": ["format", "locale", "catalog_version", "label_fingerprint", "deck_schema_fingerprint", "compiled_deck_fingerprint", "visual_brief_fingerprint", "layout_input_fingerprint", "final_size", "page_count", "validation_ok", "pages", "pixel_regression", "contact_sheet", "input_assets", "page_semantics"],
+  "properties": {
+    "format": {"const": "steam-visualogue-output-manifest"},
+    "locale": {"type": "string", "minLength": 2},
+    "catalog_version": {"type": "string", "minLength": 1},
+    "label_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "deck_schema_fingerprint": {"type": "string", "minLength": 1},
+    "compiled_deck_fingerprint": {"type": "string", "minLength": 1},
+    "visual_brief_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "layout_input_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "generated_at": {"type": "string", "minLength": 1},
+    "final_size": {"type": "array", "prefixItems": [{"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 1}], "items": false},
+    "page_count": {"type": "integer", "minimum": 12, "maximum": 18},
+    "validation_ok": {"type": "boolean"},
+    "pages": {"type": "array", "minItems": 12, "maxItems": 18, "items": {"$ref": "#/$defs/file"}},
+    "pixel_regression": {
+      "type": "object",
+      "required": ["algorithm", "deck_sha256"],
+      "properties": {"algorithm": {"const": "rgb-pixels-sha256"}, "deck_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+      "additionalProperties": false
+    },
+    "contact_sheet": {"$ref": "#/$defs/file"},
+    "input_assets": {"type": "array", "items": {"type": "object"}},
+    "page_semantics": {"type": "array", "minItems": 12, "maxItems": 18, "items": {"$ref": "#/$defs/page_semantics"}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "file": {
+      "type": "object",
+      "required": ["file", "bytes", "sha256"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1, "pattern": "^(?![A-Za-z]:)(?!/)(?!.*\\\\)"},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "page_semantics": {
+      "type": "object",
+      "required": ["page", "role", "claim_id", "evidence_hash", "narrative_move", "visible_game_ids", "asset_ids"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "role": {"type": ["string", "null"]},
+        "claim_id": {"type": ["string", "null"]},
+        "evidence_hash": {"type": ["string", "null"]},
+        "narrative_move": {"type": ["string", "null"]},
+        "visible_game_ids": {"type": "array", "items": {"type": "string"}},
+        "asset_ids": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}

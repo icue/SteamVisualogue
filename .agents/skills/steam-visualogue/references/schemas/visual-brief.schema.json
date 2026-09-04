@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "visual-brief.schema.json",
+  "title": "Bounded sampled visual brief",
+  "type": "object",
+  "required": ["evidence_fingerprint", "visual_fingerprint", "compiled_deck_fingerprint", "asset_manifest_fingerprint", "visual_brief_fingerprint", "library_palette", "comparison_palette", "sampling", "confidence", "failure_count", "candidate_assets", "accepted_inspections", "deck_policy", "role_contracts"],
+  "properties": {
+    "evidence_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "visual_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "compiled_deck_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "asset_manifest_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "visual_brief_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "library_palette": {"type": "object"},
+    "comparison_palette": {"type": "object"},
+    "sampling": {
+      "type": "object",
+      "required": ["strategy", "eligible_games", "selected_games", "successful_games", "sample_fraction", "selected_playtime_fraction", "representation_coverage"],
+      "properties": {
+        "strategy": {"const": "top32-stratified-tail32"},
+        "eligible_games": {"type": "integer", "minimum": 0},
+        "selected_games": {"type": "integer", "minimum": 0, "maximum": 64},
+        "successful_games": {"type": "integer", "minimum": 0, "maximum": 64},
+        "sample_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "selected_playtime_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "representation_coverage": {
+          "type": "object",
+          "required": ["titles", "lived_weight"],
+          "properties": {
+            "titles": {"type": "number", "minimum": 0, "maximum": 1},
+            "lived_weight": {"type": "number", "minimum": 0, "maximum": 1}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "failure_count": {"type": "integer", "minimum": 0},
+    "candidate_assets": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "path", "width", "height", "aspect_ratio", "target_roles"],
+        "properties": {
+          "asset_id": {"type": "string"},
+          "path": {"type": "string"},
+          "width": {"type": "integer", "minimum": 1},
+          "height": {"type": "integer", "minimum": 1},
+          "aspect_ratio": {"type": "number", "exclusiveMinimum": 0},
+          "target_roles": {"type": "array", "items": {"type": "string"}},
+          "exposure_count": {"type": "integer", "minimum": 0, "maximum": 1},
+          "exposure_pages": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true}
+        },
+        "additionalProperties": false
+      }
+    },
+    "accepted_inspections": {"type": "array", "maxItems": 32, "items": {"type": "object"}},
+    "deck_policy": {
+      "type": "object",
+      "required": ["max_pages_per_game", "max_pages_per_asset", "min_page_gap_for_repeated_game"],
+      "properties": {
+        "max_pages_per_game": {"const": 2},
+        "max_pages_per_asset": {"const": 1},
+        "min_page_gap_for_repeated_game": {"const": 2}
+      },
+      "additionalProperties": false
+    },
+    "role_contracts": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["encoding_kind", "content"],
+        "properties": {
+          "encoding_kind": {"type": "string"},
+          "content": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
