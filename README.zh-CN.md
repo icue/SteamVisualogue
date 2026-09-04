@@ -1,6 +1,6 @@
 # Steam Visualogue
 
-[English](README.md) | [简体中文](README.zh-CN.md)
+[English](README.md)
 
 挖掘 Steam 游玩历史中的有趣数据，转化为图文并茂的卡片。
 

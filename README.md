@@ -1,6 +1,6 @@
 # Steam Visualogue
 
-[English](README.md) | [简体中文](README.zh-CN.md)
+[简体中文](README.zh-CN.md)
 
 Turn a Steam library snapshot into a curated, reader-facing visual essay and data-driven portrait.
 
